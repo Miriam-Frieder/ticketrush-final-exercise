@@ -2,7 +2,7 @@
 const TICKET_PRICE = 350; // ₪ לכרטיס
 const SERVICE_FEE = 12;   // ₪ עמלת שירות לכל כרטיס
 const MAX_TICKETS = 8;    // מקסימום כרטיסים להזמנה
-const MEMBER_MAX_TICKETS = 4;
+const MEMBER_MAX_TICKETS = 6;
 const MEMBER_DISCOUNT = 0.20;
 const STUDENT_DISCOUNT = 0.15;
 
@@ -11,7 +11,7 @@ function maxTickets(isMember) {
 }
 
 function calcTotal(qty, isMember, isStudent) {
-  if (qty < 1 || qty > maxTickets(isMember)) return null;
+  if (!Number.isInteger(qty) || qty < 1 || qty > maxTickets(isMember)) return null;
 
   const discount = Math.max(
     isMember ? MEMBER_DISCOUNT : 0,
